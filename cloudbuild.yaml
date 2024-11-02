@@ -28,8 +28,6 @@ steps:
   - -xe
   - -c
   - |
-    export SHORT_SHA=$(git rev-parse --short HEAD)
-    echo "Short SHA: ${SHORT_SHA}"
     gcloud deploy apply --file deploy/pipeline.yaml --region=us-central1
     gcloud deploy apply --file deploy/dev.yaml --region=us-central1
     gcloud deploy apply --file deploy/dev.yaml --region=us-central1
