@@ -32,7 +32,7 @@ steps:
     gcloud deploy apply --file deploy/dev.yaml --region=us-central1
     gcloud deploy apply --file deploy/dev.yaml --region=us-central1
 
-    gcloud deploy releases create app1-release-delivery-pipeline-gke-cird-pipeline-region-us-central1-from-k8s-manifest-/kubernetes/app1.yaml
+  #  gcloud deploy releases create app1-release-delivery-pipeline-gke-cird-pipeline-region-us-central1-from-k8s-manifest-/kubernetes/app1.yaml
   #  gcloud deploy releases create app1-release --project=kubernets-project-440302 --region=us-central1 --delivery-pipeline=delivery-pipeline-gke-cird-pipeline --annotations=build=1.0.0,env=production --description=delivery-pipeline-gke-cird-pipeline    gcloud deploy releases create app1-release-delivery-pipeline-gke-cird-pipeline-region-us-central1-from-k8s-manifest-/kubernetes/app2.yaml
 
 
