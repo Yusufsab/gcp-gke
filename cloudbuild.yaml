@@ -1,18 +1,4 @@
 steps:
-  # Pre-Build: Setup GCP, kubectl, Sentry, and dependencies
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        echo "Started..."
-        gcloud auth configure-docker
-        curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.16/2023-01-30/bin/linux/amd64/kubectl
-        chmod +x ./kubectl
-        mv ./kubectl /usr/local/bin/
-        kubectl version --short --client
-
-steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'us-central1-docker.pkg.dev/kubernets-project-440302/gke-repo/quickstart-image', './app1' ]
   id: 'Build Docker Image'
