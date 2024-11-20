@@ -24,9 +24,9 @@ steps:
       - "-c"
       - |
         echo "Configuring AWS CLI..."
-        aws configure set aws_access_key_id AKIA3M7ACZ6TY64Z2MDL
-        aws configure set aws_secret_access_key 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
-        aws configure set default.region ap-southeast-2
+        aws configure set aws_access_key_id ${_AWS_ACCESS_KEY_ID}
+        aws configure set aws_secret_access_key ${_AWS_SECRET_ACCESS_KEY}
+        aws configure set default.region ${_AWS_DEFAULT_REGION}
 
   # Step 3: Access AWS Secrets Manager
   - name: gcr.io/cloud-builders/gcloud
@@ -41,3 +41,8 @@ steps:
 # Specify the logs bucket (Optional: remove if using only Cloud Logging)
 logsBucket: "gs://onesto-log-bucket"
 
+# Define substitutions
+substitutions:
+  _AWS_ACCESS_KEY_ID: "AKIA3M7ACZ6TY64Z2MDL"
+  _AWS_SECRET_ACCESS_KEY: "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"
+  _AWS_DEFAULT_REGION: "ap-southeast-2"
