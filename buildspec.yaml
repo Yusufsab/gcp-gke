@@ -6,6 +6,7 @@ steps:
         "-LO",
         "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip",
       ]
+
   - name: ubuntu
     entrypoint: bash
     args:
@@ -18,11 +19,11 @@ steps:
         aws --version
 
   # Step 2: Configure AWS CLI with provided credentials
-  - name: gcr.io/cloud-builders/gcloud
+  - name: ubuntu
     entrypoint: bash
     env:
-      - "AWS_ACCESS_KEY_ID=AKIA3M7ACZ6TY64Z2MDL"
-      - "AWS_SECRET_ACCESS_KEY=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"
+      - "AWS_ACCESS_KEY_ID=$_AWS_ACCESS_KEY_ID"
+      - "AWS_SECRET_ACCESS_KEY=$_AWS_SECRET_ACCESS_KEY"
       - "AWS_DEFAULT_REGION=ap-southeast-2"
     args:
       - "-c"
@@ -33,8 +34,12 @@ steps:
         aws configure set default.region $AWS_DEFAULT_REGION
 
   # Step 3: Access AWS Secrets Manager
-  - name: gcr.io/cloud-builders/gcloud
+  - name: ubuntu
     entrypoint: bash
+    env:
+      - "AWS_ACCESS_KEY_ID=$_AWS_ACCESS_KEY_ID"
+      - "AWS_SECRET_ACCESS_KEY=$_AWS_SECRET_ACCESS_KEY"
+      - "AWS_DEFAULT_REGION=ap-southeast-2"
     args:
       - "-c"
       - |
@@ -45,3 +50,6 @@ steps:
 # Specify the logs bucket (Optional: remove if using only Cloud Logging)
 logsBucket: "gs://onesto-log-bucket"
 
+substitutions:
+  _AWS_ACCESS_KEY_ID: "AKIA3M7ACZ6TY64Z2MDL"
+  _AWS_SECRET_ACCESS_KEY: "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"
