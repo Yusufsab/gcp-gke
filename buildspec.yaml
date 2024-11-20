@@ -42,9 +42,6 @@ steps:
         SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id test2 --query 'SecretString' --output text)
         echo "Secret Value Retrieved: $SECRET_VALUE"
 
-artifacts:
-  objects:
-    location: "gs://yusufk-test/"
-    paths:
-      - "imagedefinitions.json"
+# Specify the logs bucket (Optional: remove if using only Cloud Logging)
+logsBucket: "gs://onesto-log-bucket"
 
