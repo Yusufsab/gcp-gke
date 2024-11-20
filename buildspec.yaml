@@ -52,7 +52,7 @@ options:
   logging: REGIONAL_USER_OWNED_BUCKET # Use logging with user-owned bucket behavior
 
 substitutions:
-  _REGION: "us-central1"
+  _REGION: "us"
   _PROJECT_ID: "kubernets-project-440302"
   _KUBE_DIR: "/home"
 
