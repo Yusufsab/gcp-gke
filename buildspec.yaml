@@ -48,9 +48,3 @@ artifacts:
     paths:
       - "imagedefinitions.json"
 
-substitutions:
-  _REGION: "us"
-  _PROJECT_ID: "kubernets-project-440302"
-  _KUBE_DIR: "/home"
-
-serviceAccount: "projects/kubernets-project-440302/serviceAccounts/cloud-build-sa@kubernets-project-440302.iam.gserviceaccount.com"
