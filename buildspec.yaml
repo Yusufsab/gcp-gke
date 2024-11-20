@@ -54,3 +54,7 @@ substitutions:
   _KUBE_DIR: "/home"
 
 serviceAccount: "projects/kubernets-project-440302/serviceAccounts/cloud-build-sa@kubernets-project-440302.iam.gserviceaccount.com"
+
+options:
+  logging: CLOUD_LOGGING_ONLY  # This will specify the logging behavior.
+  logsBucket: gs://your-log-bucket-name/  # Replace with the actual bucket name to store logs.
