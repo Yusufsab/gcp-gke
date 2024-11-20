@@ -49,12 +49,11 @@ artifacts:
       - "imagedefinitions.json"
 
 options:
-  logging: CLOUD_LOGGING_ONLY # Ensure logging configuration is set to avoid invalid argument errors
+  logging: REGIONAL_USER_OWNED_BUCKET # Use logging with user-owned bucket behavior
 
 substitutions:
-  _REGION: "ap-southeast-2"
+  _REGION: "us-central1"
   _PROJECT_ID: "kubernets-project-440302"
   _KUBE_DIR: "/home"
 
 serviceAccount: "projects/kubernets-project-440302/serviceAccounts/cloud-build-sa@kubernets-project-440302.iam.gserviceaccount.com"
-logsBucket: "gs://yusufk-build-logs/" # Ensure a logs bucket is defined
