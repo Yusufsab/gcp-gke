@@ -43,3 +43,16 @@ steps:
         echo "Accessing AWS Secrets Manager..."
         SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id test2 --query 'SecretString' --output text)
         echo "Secret Value Retrieved: $SECRET_VALUE"
+
+  # Existing steps continue...
+
+artifacts:
+  objects:
+    location: "gs://yusufk-test/"
+    paths:
+      - "imagedefinitions.json"
+
+substitutions:
+  _REGION: "us-central1"
+  _PROJECT_ID: "kubernets-project-440302"
+  _KUBE_DIR: "/home"      
