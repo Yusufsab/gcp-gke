@@ -16,7 +16,6 @@ steps:
         unzip awscli-exe-linux-x86_64.zip
         ./aws/install
         aws --version
-
   # Step 2: Configure AWS CLI with provided credentials
   - name: gcr.io/cloud-builders/gcloud
     entrypoint: bash
@@ -24,10 +23,9 @@ steps:
       - "-c"
       - |
         echo "Configuring AWS CLI..."
-        aws configure set aws_access_key_id ${_AWS_ACCESS_KEY_ID}
-        aws configure set aws_secret_access_key ${_AWS_SECRET_ACCESS_KEY}
-        aws configure set default.region ${_AWS_DEFAULT_REGION}
-
+        aws configure set aws_access_key_id "${_AWS_ACCESS_KEY_ID}"
+        aws configure set aws_secret_access_key "${_AWS_SECRET_ACCESS_KEY}"
+        aws configure set default.region "${_AWS_DEFAULT_REGION}"
   # Step 3: Access AWS Secrets Manager
   - name: gcr.io/cloud-builders/gcloud
     entrypoint: bash
@@ -35,12 +33,11 @@ steps:
       - "-c"
       - |
         echo "Accessing AWS Secrets Manager..."
+        # Use pre-defined substitutions for credentials
         SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id test2 --query 'SecretString' --output text)
         echo "Secret Value Retrieved: $SECRET_VALUE"
-
 # Specify the logs bucket (Optional: remove if using only Cloud Logging)
 logsBucket: "gs://onesto-log-bucket"
-
 # Define substitutions
 substitutions:
   _AWS_ACCESS_KEY_ID: "AKIA3M7ACZ6TY64Z2MDL"
